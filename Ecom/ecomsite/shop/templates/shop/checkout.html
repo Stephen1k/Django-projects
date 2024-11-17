@@ -24,6 +24,8 @@
                 <div class="col-md-12 ">
 
                     <form method="POST">
+                      {% csrf_token %}
+                        <input type="hidden" id="items" name="items">
                         <div class="container py-5">
                         <div class="row d-flex justify-content-center align-items-center">
                           <div class="col">
@@ -77,7 +79,7 @@
                                 </div>
                       
                                 <div class="d-flex justify-content-end pt-3">
-                                  <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg ms-2" style="background-color: hsl(210, 100%, 50%);">Place order</button>
+                                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg ms-2" style="background-color: hsl(210, 100%, 50%);">Place order</button>
                                 </div>
                       
                               </div>
@@ -105,14 +107,20 @@
          else{
             cart = JSON.parse(localStorage.getItem('cart'));
          }
+         let total = 0
          for (let item in cart) {
-            let name = cart[item].name
-            let quantity = cart[item].count
+            let name = cart[item].name;
+            let quantity = cart[item].count;
+            let price = cart[item].price;
+            total = total + cart[item].price;
 
-            itemString = `<li class="list-group-item">${name}-${quantity}</li>`;
+
+            itemString = `<li class="list-group-item">${name} <span class=""> Qty(${quantity}) </span><span class="bg bg-warning bg-pill"> $${price} </span></li>`;
             $('#item_list').append(itemString);
          }
-
+         total_price = `<li class="list-group-item d-flex justify-content-between align-items-center"><b>Your total: </b> ${total}</li> `
+         $('#item_list').append(total_price);
+         $('#items').val(JSON.stringify(cart));
 
     </script>
 </body>

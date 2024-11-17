@@ -69,9 +69,7 @@
                     <img src="{{product.image}}" class="card-img-top">
                     <div class="card-body">
                         <div id="nm{{product.id}}" class="card-title">{{ product.title }}</div>
-                        <div class="card-text">
-                            ${{ product.price }}
-                        </div>
+                        <div id="price{{product.id}}" class="card-text">{{product.price}}</div>
                         <a  href="/{{ product.id }}" class="btn btn-warning">View</a>
                         <button id="{{product.id}}" class="btn atc btn-warning">Add to cart</button>
                     </div>
@@ -116,13 +114,16 @@
             //console.log('Add to cart button');
             let item_id = this.id.toString();
             let item_name = $("#nm" + item_id).text();
+            let price = parseFloat(document.getElementById("price"+item_id).innerHTML);
             // console.log($("#nm" + item_id).text());
 
             // Correct structure to add product details:
         if (cart[item_id] !== undefined) {
             cart[item_id].count += 1;
+            cart[item_id].price = cart[item_id].price + price;
+
         } else {
-            cart[item_id] = { count: 1, name: $("#nm" + item_id).text() };
+            cart[item_id] = { count: 1, name: $("#nm" + item_id).text(), price: parseFloat(document.getElementById("price"+item_id).innerHTML)};
         }
 
             console.log(cart);
