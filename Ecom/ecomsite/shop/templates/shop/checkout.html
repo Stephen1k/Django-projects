@@ -72,10 +72,15 @@
                                   <input type="text" id="zip" name="zip" class="form-control form-control-lg" />
                                   <label class="form-label" for="zip">Zip</label>
                                 </div>
-                      
+                                
                                 <div data-mdb-input-init class="form-outline mb-4">
                                   <input type="text" id="email" name="email" class="form-control form-control-lg" />
                                   <label class="form-label" for="email">Email</label>
+                                </div>
+
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                  <input type="text" readonly="" id="total" name="total" class="form-control form-control-lg" />
+                                  <label class="form-label" for="total">Total Basket</label>
                                 </div>
                       
                                 <div class="d-flex justify-content-end pt-3">
@@ -119,6 +124,7 @@
             $('#item_list').append(itemString);
          }
          total_price = `<li class="list-group-item d-flex justify-content-between align-items-center"><b>Your total: </b> ${total}</li> `
+         $('#total').val(total);
          $('#item_list').append(total_price);
          $('#items').val(JSON.stringify(cart));
 
