@@ -1,0 +1,15 @@
+div.expense-header, div.expense-row{
+    display:table;
+    width:100%;
+    table-layout: fixed;
+
+}
+
+div.expense-header, div.expense-row span{
+    display:table-cell;
+
+}
+
+.expense-header{
+    text-color:blue;
+}

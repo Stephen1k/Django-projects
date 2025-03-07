@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses</title>
     <link href="../../static/myapp/output.css" rel="stylesheet">
+    <link href="../../static/myapp/style.css" rel="stylesheet">
 
 </head>
 <body>
 
+    <nav class="shadow-lg p-5">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <a href="#" class="flex">
+                <img class="h-10 mr-3" src="{%static 'myapp/images/money.png' %}" alt="">
+                <span class="self-center text-xl font-semibold">Expense Tracker</span>
+            </a>
+        </div>
+    </nav>
     {%block body%}
     {% endblock %}
     
